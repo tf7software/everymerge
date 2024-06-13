@@ -1,23 +1,28 @@
-<!-- public/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EveryMerge By Tapioca AI</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="favicon.png" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Every Merge</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
-    <div class="container">
-        <img src="logo.png" alt="Logo" class="logo">
-        <h1>EveryMerge By Tapioca AI</h1>
-        <input type="text" id="word1" placeholder="Enter first thing">
-        <input type="text" id="word2" placeholder="Enter second thing">
-        <button id="combineButton">COMBINE!</button>
-        <div id="result"></div>
-        <div id="loading" class="loading">Combining<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></div>
+  <div class="container">
+    <img src="logo.png" alt="Every Merge Logo" class="logo">
+    <h1>Every Merge</h1>
+    <div class="input-group">
+      <input type="text" id="item1" placeholder="Enter first item">
+      <input type="text" id="item2" placeholder="Enter second item">
     </div>
-    <script src="script.js"></script>
+    <button onclick="combineItems()">Combine</button>
+    <div id="loading" class="ellipsis">
+      <div></div><div></div><div></div><div></div>
+      
+    </div>
+    <div id="result"></div>
+    <div id="message"></div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,29 +1,29 @@
-// public/script.js
-document.getElementById('combineButton').addEventListener('click', async () => {
-    const word1 = document.getElementById('word1').value;
-    const word2 = document.getElementById('word2').value;
-    const resultDiv = document.getElementById('result');
-    const loadingDiv = document.getElementById('loading');
+async function combineItems() {
+  const item1 = document.getElementById('item1').value;
+  const item2 = document.getElementById('item2').value;
+  const resultElement = document.getElementById('result');
+  const messageElement = document.getElementById('message');
+  const loadingElement = document.getElementById('loading');
 
-    // Show loading animation
-    resultDiv.innerText = '';
-    loadingDiv.style.display = 'block';
+  if (!item1 || !item2) {
+    alert('Please enter both items');
+    return;
+  }
 
-    try {
-        const response = await fetch('/combine', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ word1, word2 })
-        });
+  resultElement.innerText = '';
+  messageElement.innerText = '';
+  loadingElement.style.display = 'inline-block';
 
-        const data = await response.json();
-        // Hide loading animation and show result
-        loadingDiv.style.display = 'none';
-        resultDiv.innerText = data.result;
-    } catch (error) {
-        loadingDiv.style.display = 'none';
-        resultDiv.innerText = 'Error generating content.';
-    }
-});
+  const response = await fetch('/combine', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ item1, item2 }),
+  });
+
+  const data = await response.json();
+  loadingElement.style.display = 'none';
+  resultElement.innerText = `Combined Result: ${data.result}`;
+  messageElement.innerText = data.message;
+}
