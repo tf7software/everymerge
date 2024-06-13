@@ -26,7 +26,7 @@ app.post('/combine', async (req, res) => {
   if (combinations[key]) {
     res.json({ result: combinations[key], message: '' });
   } else {
-    const prompt = `Combine ${item1} and ${item2} into a single word and emoji. Use No Formatting`;
+    const prompt = `Combine ${item1} and ${item2} into a single word and emoji. Use No Formatting. Also make it creative, like fire plus ice equals water, not fireice`;
     const result = await model.generateContent(prompt);
     const response = await result.response;
     const combinedResult = response.text();
